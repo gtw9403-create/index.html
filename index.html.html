@@ -1,0 +1,1519 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Ramadhan Journey — SMPN 7 Pasuruan</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Amiri:wght@400;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════
+   VARIABLES
+══════════════════════════════ */
+:root {
+  --ink: #050d1c;
+  --ink2: #0a1930;
+  --ink3: #102444;
+  --emerald: #00b87a;
+  --emerald2: #00e895;
+  --emerald3: #006b48;
+  --gold: #f0a800;
+  --gold2: #ffc840;
+  --gold3: #ffe48a;
+  --sky: #1a6fff;
+  --orchid: #9b5cf6;
+  --rose: #e4447a;
+  --amber: #f0820a;
+  --text: #d8e8ff;
+  --text2: #7090b8;
+  --text3: #3a5068;
+  --border: rgba(255,255,255,.07);
+  --border2: rgba(255,255,255,.13);
+  --glass: rgba(255,255,255,.055);
+  --glass2: rgba(255,255,255,.09);
+  --r: 16px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--ink);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── ANIMATED BACKGROUND ── */
+.bg-wrap {
+  position: fixed; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse 100% 70% at 10% -5%, #0c2d62 0%, transparent 55%),
+    radial-gradient(ellipse 80% 60% at 90% 110%, #001e0e 0%, transparent 50%),
+    radial-gradient(ellipse 50% 40% at 60% 55%, #07072e 0%, transparent 55%),
+    linear-gradient(180deg, #050d1c 0%, #030810 100%);
+}
+.bg-wrap::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.016) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.016) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, black, transparent);
+  mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, black, transparent);
+}
+.bg-wrap::after {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle 300px at 20% 80%, rgba(0,184,122,.07) 0%, transparent 70%),
+    radial-gradient(circle 250px at 80% 20%, rgba(240,168,0,.06) 0%, transparent 70%);
+}
+
+.star-field { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+.star-field span {
+  position: absolute; border-radius: 50%; background: white;
+  animation: twink var(--d,3s) ease-in-out infinite var(--dl,0s); opacity: 0;
+}
+@keyframes twink { 0%,100%{opacity:0} 50%{opacity:var(--op,.7)} }
+
+/* ── PAGE SYSTEM ── */
+.page { display: none; position: relative; z-index: 10; min-height: 100vh; }
+.page.active { display: flex; flex-direction: column; }
+
+/* ══════════════════════════════════════
+   LOGIN PAGE — MODERN SPLIT LAYOUT
+══════════════════════════════════════ */
+#loginPage {
+  align-items: center; justify-content: center;
+  padding: 40px 24px; min-height: 100vh;
+}
+
+.login-wrap {
+  width: 100%; max-width: 940px;
+  display: grid; grid-template-columns: 1fr 400px;
+  gap: 64px; align-items: center;
+  animation: slideUp .75s cubic-bezier(.22,1,.36,1) both;
+}
+@keyframes slideUp { from{opacity:0;transform:translateY(32px)} to{opacity:1;transform:translateY(0)} }
+@media(max-width:840px) {
+  .login-wrap { grid-template-columns: 1fr; gap: 32px; }
+  .login-hero { text-align: center; }
+  .login-hero p { margin-left: auto; margin-right: auto; }
+  .hero-chips { justify-content: center; }
+}
+
+/* HERO SIDE */
+.login-hero {}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 16px; border-radius: 50px;
+  background: rgba(0,184,122,.1); border: 1px solid rgba(0,184,122,.25);
+  font-size: .68rem; font-weight: 700; color: var(--emerald2);
+  letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px;
+}
+.hero-arabic {
+  font-family: 'Amiri', serif;
+  font-size: 1.6rem; color: var(--gold3); letter-spacing: 4px; margin-bottom: 8px;
+  text-shadow: 0 0 40px rgba(255,228,138,.3);
+}
+.hero-moon {
+  display: block; font-size: 3rem; margin-bottom: 8px;
+  animation: moonAnim 5s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px rgba(255,196,64,.55));
+}
+@keyframes moonAnim { 0%,100%{transform:translateY(0) rotate(-8deg)} 50%{transform:translateY(-12px) rotate(5deg)} }
+.hero-title {
+  font-size: clamp(2.2rem,4.5vw,3.5rem);
+  font-weight: 900; line-height: 1.05; letter-spacing: -1.5px;
+  color: #fff; margin-bottom: 6px;
+}
+.hero-title .accent { color: var(--gold2); }
+.hero-school {
+  font-size: .76rem; font-weight: 700; color: var(--emerald2);
+  letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 14px;
+}
+.login-hero p {
+  font-size: .9rem; color: var(--text2); line-height: 1.75;
+  max-width: 380px; margin-bottom: 24px;
+}
+.hero-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.hchip {
+  background: var(--glass2); border: 1px solid var(--border2);
+  border-radius: 50px; padding: 6px 14px;
+  font-size: .7rem; font-weight: 600; color: var(--text2);
+}
+
+/* CARD SIDE */
+.login-card {
+  background: rgba(255,255,255,.07);
+  backdrop-filter: blur(30px) saturate(1.4);
+  -webkit-backdrop-filter: blur(30px) saturate(1.4);
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 26px; padding: 38px 34px;
+  box-shadow: 0 32px 80px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.1);
+  animation: slideUp .75s .1s cubic-bezier(.22,1,.36,1) both;
+}
+.login-logo { text-align: center; margin-bottom: 26px; }
+.login-logo-icon {
+  width: 64px; height: 64px; margin: 0 auto 12px;
+  background: linear-gradient(135deg, var(--emerald3), var(--emerald));
+  border-radius: 20px; display: flex; align-items: center; justify-content: center;
+  font-size: 2rem; box-shadow: 0 8px 28px rgba(0,184,122,.45);
+  animation: moonAnim 5s ease-in-out infinite;
+}
+.login-title { font-size: 1.28rem; font-weight: 800; color: #fff; letter-spacing: -.4px; }
+.login-subtitle { color: var(--emerald2); font-size: .7rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 3px; }
+.login-desc { color: var(--text2); font-size: .73rem; margin-top: 3px; }
+
+.sep { height: 1px; background: var(--border); margin: 22px 0; }
+
+.form-group { margin-bottom: 14px; }
+.form-label {
+  display: block; font-size: .62rem; font-weight: 800;
+  color: var(--emerald2); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 7px;
+}
+.form-input, .form-select {
+  width: 100%; padding: 12px 14px;
+  background: rgba(255,255,255,.08); border: 1.5px solid var(--border2);
+  border-radius: 11px; font-family: 'Outfit', sans-serif;
+  font-size: .9rem; font-weight: 500; color: #fff;
+  outline: none; transition: all .2s; appearance: none;
+}
+.form-input::placeholder { color: var(--text3); }
+.form-input:focus, .form-select:focus {
+  border-color: var(--emerald); background: rgba(255,255,255,.11);
+  box-shadow: 0 0 0 3px rgba(0,184,122,.16);
+}
+.form-select option, .form-select optgroup { background: #0a1930; color: var(--text); }
+
+.login-btn {
+  width: 100%; padding: 15px;
+  background: linear-gradient(135deg, var(--emerald), #00a060);
+  border: none; border-radius: 13px; font-family: 'Outfit', sans-serif;
+  font-size: .95rem; font-weight: 800; color: #fff; cursor: pointer;
+  margin-top: 6px; letter-spacing: .3px;
+  box-shadow: 0 8px 28px rgba(0,184,122,.45);
+  transition: transform .15s, box-shadow .15s;
+  position: relative; overflow: hidden;
+}
+.login-btn::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,.18), transparent);
+}
+.login-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(0,184,122,.55); }
+.login-btn:active { transform: none; }
+
+.guru-link {
+  display: block; text-align: center; margin-top: 14px;
+  color: var(--text2); font-size: .82rem; font-weight: 600;
+  cursor: pointer; transition: color .15s;
+}
+.guru-link:hover { color: var(--gold2); }
+
+/* bg decoration */
+.bg-circles { position: fixed; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
+.bg-circle { position: absolute; border-radius: 50%; }
+.bg-circle-1 { width:360px;height:360px;top:-100px;right:-100px; background:radial-gradient(var(--emerald),transparent 70%); opacity:.08; }
+.bg-circle-2 { width:260px;height:260px;bottom:40px;left:-80px; background:radial-gradient(var(--gold),transparent 70%); opacity:.06; }
+.bg-circle-3 { width:130px;height:130px;bottom:160px;right:70px; background:radial-gradient(var(--gold),transparent 70%); opacity:.05; }
+.mosque-deco { position:fixed;bottom:0;left:0;right:0;z-index:2;pointer-events:none;opacity:.055; }
+
+/* ══════════════════════════════════════
+   TOPBAR
+══════════════════════════════════════ */
+#appPage { background: transparent; }
+.topbar {
+  background: rgba(5,13,28,.82);
+  backdrop-filter: blur(24px);
+  padding: 0 24px; height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+  position: sticky; top: 0; z-index: 200;
+  border-bottom: 1px solid var(--border2);
+  box-shadow: 0 4px 28px rgba(0,0,0,.45);
+}
+.topbar-left { display: flex; align-items: center; gap: 12px; }
+.topbar-brand {
+  width: 38px; height: 38px; border-radius: 12px;
+  background: linear-gradient(135deg, var(--emerald3), var(--emerald));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; box-shadow: 0 4px 14px rgba(0,184,122,.35);
+  flex-shrink: 0;
+}
+.topbar-icon { display: none; }
+.topbar-name { font-size: .95rem; font-weight: 800; color: #fff; letter-spacing: -.3px; }
+.topbar-sub { font-size: .67rem; color: var(--text2); font-weight: 500; }
+.topbar-right { display: flex; align-items: center; gap: 10px; }
+.topbar-avatar {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--gold2));
+  display: flex; align-items: center; justify-content: center;
+  font-size: .9rem; font-weight: 900; color: #7a4400;
+  box-shadow: 0 3px 12px rgba(240,168,0,.4); flex-shrink: 0;
+}
+
+.btn-keluar {
+  background: rgba(255,255,255,.09); border: 1px solid var(--border2);
+  border-radius: 9px; padding: 7px 14px;
+  font-family: 'Outfit', sans-serif; font-size: .75rem; font-weight: 700;
+  color: var(--text2); cursor: pointer; transition: all .15s;
+}
+.btn-keluar:hover { background: rgba(255,255,255,.17); color: #fff; }
+
+/* ── PROGRESS BANNER ── */
+.progress-banner {
+  background: rgba(5,13,28,.65); backdrop-filter: blur(12px);
+  padding: 14px 24px; border-bottom: 1px solid var(--border);
+}
+.progress-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.progress-label { font-size: .66rem; font-weight: 800; color: var(--gold2); letter-spacing: 1.5px; text-transform: uppercase; }
+.progress-day { font-size: .82rem; font-weight: 600; color: var(--text); }
+.progress-track { height: 7px; background: rgba(255,255,255,.07); border-radius: 7px; overflow: hidden; }
+.progress-fill {
+  height: 100%; border-radius: 7px;
+  background: linear-gradient(90deg, var(--emerald), var(--gold2));
+  transition: width .6s cubic-bezier(.34,1.56,.64,1);
+  box-shadow: 0 0 12px rgba(0,184,122,.5);
+}
+.progress-labels { display: flex; justify-content: space-between; font-size: .6rem; color: var(--text3); margin-top: 4px; font-weight: 600; }
+
+/* ── DAY PICKER ── */
+.day-picker-row {
+  background: rgba(5,13,28,.55); backdrop-filter: blur(8px);
+  padding: 11px 24px; display: flex; align-items: center; gap: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.day-picker-label { font-size: .67rem; color: var(--text2); font-weight: 700; letter-spacing: .5px; white-space: nowrap; }
+.day-select {
+  flex: 1; padding: 9px 32px 9px 13px;
+  background: rgba(255,255,255,.07); border: 1px solid var(--border2);
+  border-radius: 10px; color: var(--text);
+  font-family: 'Outfit', sans-serif; font-size: .87rem; font-weight: 600;
+  outline: none; cursor: pointer; appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath fill='%237090b8' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 12px center;
+  transition: border-color .2s;
+}
+.day-select:focus { border-color: var(--emerald); }
+.day-select option { background: #0a1930; }
+
+.btn-muat {
+  padding: 9px 20px;
+  background: linear-gradient(135deg, var(--gold), var(--gold2));
+  border: none; border-radius: 10px;
+  font-family: 'Outfit', sans-serif; font-size: .8rem; font-weight: 800;
+  color: #7a4400; cursor: pointer; white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(240,168,0,.35);
+  transition: transform .15s, box-shadow .15s;
+}
+.btn-muat:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(240,168,0,.45); }
+
+/* ── TABS ── */
+.tabs-wrap {
+  background: rgba(5,13,28,.7); backdrop-filter: blur(8px);
+  padding: 0 24px; overflow-x: auto; display: flex; gap: 0;
+  border-bottom: 1px solid var(--border);
+  -webkit-overflow-scrolling: touch;
+  position: sticky; top: 64px; z-index: 100;
+}
+.tabs-wrap::-webkit-scrollbar { display: none; }
+.tab-btn {
+  padding: 13px 16px;
+  font-family: 'Outfit', sans-serif; font-size: .72rem; font-weight: 700;
+  background: none; border: none; color: var(--text2); cursor: pointer;
+  white-space: nowrap; border-bottom: 2px solid transparent; margin-bottom: -1px;
+  letter-spacing: .3px; transition: color .15s, border-color .15s, background .15s;
+}
+.tab-btn:hover { color: var(--text); background: rgba(255,255,255,.04); }
+.tab-btn.active { color: var(--gold2); border-bottom-color: var(--gold2); background: rgba(240,168,0,.06); }
+
+/* ── JOURNAL CONTENT ── */
+.journal-content { flex: 1; padding: 20px 24px; max-width: 900px; width: 100%; margin: 0 auto; }
+.journal-section { display: none; animation: fadeSlide .25s ease both; }
+.journal-section.active { display: block; }
+@keyframes fadeSlide { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+
+/* SECTION CARDS */
+.section-card {
+  background: rgba(255,255,255,.93);
+  border-radius: 20px; padding: 28px; color: #08162a;
+  box-shadow: 0 6px 40px rgba(0,0,0,.3), 0 1px 0 rgba(255,255,255,.6);
+  border: 1px solid rgba(255,255,255,.5);
+}
+.section-card + .section-card { margin-top: 14px; }
+.section-card-title {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 1.1rem; font-weight: 800; color: #08162a;
+  margin-bottom: 20px; padding-bottom: 16px;
+  border-bottom: 1.5px solid rgba(0,0,0,.07);
+}
+.section-card-title span { font-size: 1.4rem; }
+.sc-ico {
+  width: 42px; height: 42px; border-radius: 13px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.25rem; flex-shrink: 0;
+}
+.ic-g { background: linear-gradient(135deg,#c8fce0,#90f0bc); }
+.ic-b { background: linear-gradient(135deg,#c8e8ff,#90c8f5); }
+.ic-y { background: linear-gradient(135deg,#fff0a8,#ffe060); }
+.ic-p { background: linear-gradient(135deg,#ece0ff,#d0b8f8); }
+.ic-r { background: linear-gradient(135deg,#ffe0e8,#f8b0c8); }
+.ic-t { background: linear-gradient(135deg,#c8f5f0,#90e8e0); }
+.ic-o { background: linear-gradient(135deg,#ffe8c0,#f8cc90); }
+.ic-i { background: linear-gradient(135deg,#e0e8ff,#b8c8f8); }
+
+/* FORM FIELDS */
+.field-group { margin-bottom: 16px; }
+.field-group:last-child { margin-bottom: 0; }
+.field-label {
+  display: block; font-size: .62rem; font-weight: 800;
+  color: var(--emerald3); letter-spacing: .8px; text-transform: uppercase; margin-bottom: 7px;
+}
+.inner-input, .inner-textarea {
+  width: 100%; padding: 11px 13px;
+  border: 1.5px solid #ccdcf0; border-radius: 10px;
+  font-family: 'Outfit', sans-serif; font-size: .88rem; font-weight: 500;
+  color: #08162a; background: #f2f7ff; outline: none; resize: none;
+  transition: border-color .2s, box-shadow .2s, background .2s; line-height: 1.55;
+}
+.inner-input:focus, .inner-textarea:focus {
+  border-color: var(--emerald); background: #fff;
+  box-shadow: 0 0 0 3px rgba(0,184,122,.12);
+}
+input[type="time"].inner-input { cursor: pointer; }
+
+/* RADIO */
+.radio-group { display: flex; gap: 10px; flex-wrap: wrap; }
+.radio-opt { display: flex; align-items: center; gap: 8px; cursor: pointer; user-select: none; }
+.radio-opt input { display: none; }
+.radio-visual { display: flex; align-items: center; gap: 8px; }
+.radio-custom {
+  width: 20px; height: 20px; border-radius: 50%;
+  border: 2px solid #b0c4dc; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; transition: all .18s;
+}
+.radio-dot { width: 7px; height: 7px; border-radius: 50%; background: #fff; opacity: 0; transition: opacity .18s; }
+.radio-label-text { font-size: .88rem; font-weight: 600; color: #1a2d46; }
+.radio-opt.selected .radio-custom { border-color: var(--emerald); background: var(--emerald); box-shadow: 0 0 0 3px rgba(0,184,122,.2); }
+.radio-opt.selected .radio-dot { opacity: 1; }
+
+/* TOGGLES */
+.toggle-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+@media(max-width:480px) { .toggle-grid { grid-template-columns: 1fr; } }
+.toggle-item {
+  display: flex; align-items: center; justify-content: space-between;
+  background: #f2f7ff; border-radius: 12px; padding: 13px 15px;
+  cursor: pointer; border: 1.5px solid #ccdcf0; transition: all .18s; user-select: none;
+}
+.toggle-item:hover { border-color: #90c4e0; background: #e8f3ff; }
+.toggle-item.on { border-color: var(--emerald); background: rgba(0,184,122,.07); }
+.toggle-name { display: flex; align-items: center; gap: 8px; font-size: .88rem; font-weight: 700; color: #08162a; }
+.toggle-name-icon { font-size: 1.15rem; }
+.toggle-switch {
+  width: 46px; height: 24px; border-radius: 12px; background: #c0d4e8;
+  position: relative; flex-shrink: 0; transition: background .22s;
+}
+.toggle-switch::after {
+  content: ''; position: absolute; width: 18px; height: 18px; border-radius: 50%;
+  background: #fff; top: 3px; left: 3px;
+  transition: transform .22s cubic-bezier(.34,1.56,.64,1);
+  box-shadow: 0 2px 6px rgba(0,0,0,.2);
+}
+.toggle-item.on .toggle-switch { background: var(--emerald); }
+.toggle-item.on .toggle-switch::after { transform: translateX(22px); }
+
+/* SAVE */
+.save-row { padding: 14px 24px 32px; max-width: 900px; width: 100%; margin: 0 auto; }
+.btn-save {
+  width: 100%; padding: 17px;
+  background: linear-gradient(135deg, var(--gold), var(--gold2), #ffe080);
+  border: none; border-radius: 14px;
+  font-family: 'Outfit', sans-serif; font-size: .98rem; font-weight: 800;
+  color: #7a4400; cursor: pointer;
+  box-shadow: 0 8px 28px rgba(240,168,0,.42);
+  transition: transform .15s, box-shadow .15s;
+}
+.btn-save:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(240,168,0,.52); }
+.btn-save:active { transform: none; }
+
+/* PROGRESS SECTION */
+.score-banner {
+  background: linear-gradient(135deg, #054038, #007a50, #00a868);
+  border-radius: 18px; padding: 26px 28px; margin-bottom: 18px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; flex-wrap: wrap;
+  border: 1px solid rgba(0,232,149,.15);
+  position: relative; overflow: hidden;
+}
+.score-banner::before {
+  content: '🌙'; position: absolute; right: 16px; top: 50%;
+  transform: translateY(-50%); font-size: 5.5rem; opacity: .1;
+}
+.score-val { font-size: 3.2rem; font-weight: 900; color: var(--gold3); line-height: 1; }
+.score-label { font-size: .66rem; font-weight: 800; color: rgba(255,255,255,.58); letter-spacing: 1px; text-transform: uppercase; margin-top: 4px; }
+
+.stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; margin-bottom: 18px; }
+@media(max-width:500px) { .stats-grid { grid-template-columns: repeat(2,1fr); } }
+.stat-box { background: #f2f7ff; border-radius: 14px; padding: 16px 12px; text-align: center; border: 1px solid #ccdcf0; }
+.stat-num { font-size: 1.8rem; font-weight: 900; line-height: 1; }
+.stat-lbl { font-size: .6rem; font-weight: 800; color: #7a8ba8; letter-spacing: .5px; text-transform: uppercase; margin-top: 3px; }
+.stat-box.c1 .stat-num { color: #007a50; }
+.stat-box.c2 .stat-num { color: #1a6fff; }
+.stat-box.c3 .stat-num { color: #9b5cf6; }
+.stat-box.c4 .stat-num { color: #e4447a; }
+
+.chart-section { margin-top: 18px; }
+.chart-title { font-size: .68rem; font-weight: 900; color: #3a5a8a; letter-spacing: .5px; text-transform: uppercase; margin-bottom: 12px; }
+.bar-chart { display: flex; align-items: flex-end; gap: 8px; height: 110px; }
+.bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.bar-fill { width: 100%; border-radius: 6px 6px 0 0; transition: height .5s cubic-bezier(.34,1.56,.64,1); min-height: 4px; }
+.bar-lbl { font-size: .58rem; font-weight: 800; color: #7a8ba8; }
+.bar-val { font-size: .67rem; font-weight: 900; color: #3a5a8a; }
+.bar-col:nth-child(1) .bar-fill { background: linear-gradient(180deg,#34e899,#00a868); }
+.bar-col:nth-child(2) .bar-fill { background: linear-gradient(180deg,#5ca8ff,#1a6fff); }
+.bar-col:nth-child(3) .bar-fill { background: linear-gradient(180deg,#c098ff,#9b5cf6); }
+.bar-col:nth-child(4) .bar-fill { background: linear-gradient(180deg,#f088b8,#e4447a); }
+.bar-col:nth-child(5) .bar-fill { background: linear-gradient(180deg,#ffd860,#f0a800); }
+
+.badges-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+.badge-chip {
+  background: linear-gradient(135deg,#eef3ff,#e5eeff);
+  border: 1px solid #c8d8f0; border-radius: 50px;
+  padding: 5px 13px; font-size: .74rem; font-weight: 700; color: #3a4a6a;
+}
+.badge-chip.earned { background: linear-gradient(135deg,#fffbe0,#fff3b0); border-color: var(--gold); color: #8a6000; }
+
+/* MOOD */
+.mood-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
+.mood-btn {
+  display: flex; flex-direction: column; align-items: center; gap: 5px;
+  min-width: 58px; padding: 11px 12px;
+  background: #f2f7ff; border: 1.5px solid #ccdcf0;
+  border-radius: 14px; cursor: pointer; user-select: none; transition: all .18s;
+}
+.mood-btn:hover { transform: translateY(-2px); border-color: var(--gold); }
+.mood-btn.selected { border-color: var(--gold); background: #fffbe0; box-shadow: 0 4px 14px rgba(240,168,0,.2); transform: translateY(-2px); }
+.mood-icon { font-size: 1.65rem; line-height: 1; }
+.mood-lbl { font-size: .59rem; font-weight: 800; color: #7a8ba8; }
+.mood-btn.selected .mood-lbl { color: #8a6000; }
+
+/* ══════════════════════════════════════
+   GURU PAGE
+══════════════════════════════════════ */
+#guruPage {
+  justify-content: center; align-items: center; padding: 24px;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% -5%, #0a3d24, transparent),
+    linear-gradient(180deg, #050d1c, #030810);
+}
+.guru-card {
+  background: rgba(255,255,255,.07);
+  backdrop-filter: blur(30px);
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 26px; padding: 42px 38px;
+  max-width: 400px; width: 100%;
+  animation: slideUp .5s cubic-bezier(.22,1,.36,1) both;
+  box-shadow: 0 24px 64px rgba(0,0,0,.55);
+  text-align: center;
+}
+.guru-card h2 { font-size: 1.45rem; font-weight: 800; color: #fff; margin-bottom: 5px; }
+.guru-card p { font-size: .8rem; color: var(--text2); margin-bottom: 24px; }
+
+/* ══════════════════════════════════════
+   DASHBOARD
+══════════════════════════════════════ */
+#dashboardPage {}
+.dash-header {
+  background: rgba(5,13,28,.86); backdrop-filter: blur(24px);
+  padding: 0 24px; height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 1px solid var(--border2); position: sticky; top: 0; z-index: 200;
+  box-shadow: 0 4px 28px rgba(0,0,0,.4);
+}
+.dash-title { font-size: 1rem; font-weight: 800; color: #fff; }
+.dash-sub { font-size: .67rem; color: var(--text2); font-weight: 500; }
+
+.dash-content { padding: 20px 24px; max-width: 1100px; margin: 0 auto; }
+
+.dash-filter-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; align-items: center; }
+.filter-select {
+  padding: 9px 13px; border: 1px solid var(--border2);
+  background: var(--glass); border-radius: 9px;
+  color: var(--text); font-family: 'Outfit', sans-serif;
+  font-size: .8rem; font-weight: 600; outline: none; cursor: pointer;
+}
+.filter-select option { background: #0a1930; }
+
+.students-table-wrap {
+  background: rgba(255,255,255,.93); border-radius: 18px;
+  overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,.3);
+}
+.students-table { width: 100%; border-collapse: collapse; font-size: .8rem; color: #08162a; }
+.students-table th {
+  background: linear-gradient(135deg, #0a1930, #102444);
+  color: var(--text2); font-size: .63rem; font-weight: 800; letter-spacing: .5px;
+  text-transform: uppercase; padding: 12px 16px; text-align: left;
+}
+.students-table td { padding: 12px 16px; border-bottom: 1px solid #e4eef8; font-weight: 500; }
+.students-table tr:last-child td { border-bottom: none; }
+.students-table tr:hover td { background: #eef5ff; }
+.students-table td.num { font-weight: 700; }
+.badge-kelas {
+  background: rgba(0,184,122,.1); color: #006b48;
+  border: 1px solid rgba(0,184,122,.25); border-radius: 7px;
+  padding: 2px 9px; font-size: .67rem; font-weight: 800; letter-spacing: .3px;
+}
+.progress-mini { display: flex; align-items: center; gap: 8px; }
+.progress-mini-bar { flex: 1; height: 5px; background: #ddeaf8; border-radius: 5px; overflow: hidden; }
+.progress-mini-fill { height: 100%; border-radius: 5px; background: linear-gradient(90deg,var(--emerald),var(--gold2)); transition: width .4s; }
+.progress-mini-pct { font-size: .67rem; font-weight: 800; color: #006b48; white-space: nowrap; }
+.no-data { text-align: center; padding: 48px; color: #9badc8; font-size: .88rem; font-weight: 500; }
+
+/* TOAST */
+.toast {
+  position: fixed; bottom: 28px; left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: var(--emerald); color: #fff;
+  padding: 13px 26px; border-radius: 50px;
+  font-weight: 700; font-size: .88rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,.32);
+  z-index: 9999; display: flex; align-items: center; gap: 8px;
+  transition: transform .4s cubic-bezier(.34,1.56,.64,1);
+  pointer-events: none; white-space: nowrap;
+}
+.toast.show { transform: translateX(-50%) translateY(0); }
+
+@media(max-width:600px) {
+  .login-card { padding: 26px 20px; }
+  .journal-content, .save-row { padding: 14px; }
+  .topbar, .progress-banner, .day-picker-row { padding-left: 14px; padding-right: 14px; }
+  .tabs-wrap { padding: 0 14px; }
+  .section-card { padding: 18px; }
+  .dash-content { padding: 14px; }
+}
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="bg-wrap"></div>
+<div class="star-field" id="starField"></div>
+<div class="bg-circles">
+  <div class="bg-circle bg-circle-1"></div>
+  <div class="bg-circle bg-circle-2"></div>
+  <div class="bg-circle bg-circle-3"></div>
+</div>
+
+<!-- ══════════════════ LOGIN PAGE ══════════════════ -->
+<div id="loginPage" class="page active">
+  <div class="login-wrap">
+    <!-- HERO SIDE -->
+    <div class="login-hero">
+      <div class="hero-badge">🌙 Ramadhan 1446 H</div>
+      <div class="hero-arabic">رَمَضَان كَرِيم</div>
+      <span class="hero-moon">🌙</span>
+      <h1 class="hero-title">My <span class="accent">Ramadhan</span><br>Journey</h1>
+      <div class="hero-school">SMPN 7 Pasuruan</div>
+      <p>Jurnal ibadah digital Ramadhan untuk siswa-siswi. Catat puasa, shalat, tilawah, akhlak, dan refleksi harianmu selama 30 hari penuh.</p>
+      <div class="hero-chips">
+        <div class="hchip">🌙 Puasa 30 Hari</div>
+        <div class="hchip">🕌 Shalat 5 Waktu</div>
+        <div class="hchip">📖 Tilawah</div>
+        <div class="hchip">❤️ Akhlak</div>
+        <div class="hchip">📊 Progress & Badge</div>
+      </div>
+    </div>
+    <!-- CARD SIDE -->
+    <div class="login-card">
+      <div class="login-logo">
+        <div class="login-logo-icon">🕌</div>
+        <div class="login-title">Masuk Jurnal</div>
+        <div class="login-subtitle">SMPN 7 Pasuruan</div>
+        <div class="login-desc">Isi data dirimu untuk mulai</div>
+      </div>
+      <div class="sep"></div>
+      <div class="form-group">
+        <label class="form-label">✏️ Nama Lengkap</label>
+        <input type="text" class="form-input" id="inputNama" placeholder="Masukkan nama lengkap" autocomplete="off">
+      </div>
+      <div class="form-group">
+        <label class="form-label">🏫 Kelas</label>
+        <select class="form-select" id="inputKelas">
+          <option value="">— Pilih Kelas —</option>
+          <optgroup label="Kelas 7"><option>7A</option><option>7B</option><option>7C</option><option>7D</option><option>7E</option><option>7F</option><option>7G</option><option>7H</option></optgroup>
+          <optgroup label="Kelas 8"><option>8A</option><option>8B</option><option>8C</option><option>8D</option><option>8E</option><option>8F</option><option>8G</option><option>8H</option></optgroup>
+          <optgroup label="Kelas 9"><option>9A</option><option>9B</option><option>9C</option><option>9D</option><option>9E</option><option>9F</option><option>9G</option><option>9H</option></optgroup>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">🔢 No. Absen</label>
+        <input type="number" class="form-input" id="inputAbsen" placeholder="Masukkan nomor absen" min="1" max="40">
+      </div>
+      <button class="login-btn" onclick="doLogin()">🌙 Mulai Perjalanan Ramadhan</button>
+      <a class="guru-link" onclick="showGuru()">🧑‍🏫 Login sebagai Guru →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ APP PAGE ══════════════════ -->
+<div id="appPage" class="page">
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <div class="topbar-brand">🌙</div>
+      <div>
+        <div class="topbar-name" id="topbarName">—</div>
+        <div class="topbar-sub" id="topbarSub">—</div>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <div class="topbar-avatar" id="topbarAvatar">?</div>
+      <button class="btn-keluar" onclick="doLogout()">Keluar</button>
+    </div>
+  </div>
+
+  <!-- PROGRESS BANNER -->
+  <div class="progress-banner">
+    <div class="progress-top">
+      <span class="progress-label">Progress Ramadhan</span>
+      <span class="progress-day" id="progressDay">Hari ke-1 dari 30</span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill" style="width:3.33%"></div>
+    </div>
+    <div class="progress-labels"><span>1 Ramadan</span><span>30 Ramadan</span></div>
+  </div>
+
+  <!-- DAY PICKER -->
+  <div class="day-picker-row">
+    <span class="day-picker-label">Pilih Hari:</span>
+    <select class="day-select" id="daySelect"></select>
+    <button class="btn-muat" onclick="loadDay()">Muat</button>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs-wrap" id="tabsWrap">
+    <button class="tab-btn active" data-tab="puasa" onclick="switchTab(this)">🌙 Puasa</button>
+    <button class="tab-btn" data-tab="shalat" onclick="switchTab(this)">🕌 Shalat Wajib</button>
+    <button class="tab-btn" data-tab="sunah" onclick="switchTab(this)">✨ Shalat Sunah</button>
+    <button class="tab-btn" data-tab="tilawah" onclick="switchTab(this)">📖 Tilawah</button>
+    <button class="tab-btn" data-tab="kultum" onclick="switchTab(this)">🎙️ Kultum</button>
+    <button class="tab-btn" data-tab="akhlak" onclick="switchTab(this)">❤️ Akhlak</button>
+    <button class="tab-btn" data-tab="refleksi" onclick="switchTab(this)">💭 Refleksi</button>
+    <button class="tab-btn" data-tab="progress" onclick="switchTab(this)">📊 Progress</button>
+  </div>
+
+  <!-- CONTENT AREA -->
+  <div class="journal-content">
+
+    <!-- PUASA -->
+    <div id="tab-puasa" class="journal-section active">
+      <div class="section-card">
+        <div class="section-card-title"><div class="sc-ico ic-g">🌙</div><div>Jurnal Puasa<br><span style="font-size:.65rem;font-weight:500;color:#7a8ba8">Catatan puasa harian</span></div></div>
+
+        <div class="field-group">
+          <label class="field-label">Apakah kamu berpuasa hari ini?</label>
+          <div class="radio-group">
+            <label class="radio-opt" id="radioYa" onclick="selectRadio('puasa','ya')">
+              <div class="radio-visual">
+                <div class="radio-custom"><div class="radio-dot"></div></div>
+                <span class="radio-label-text">✅ Ya, Alhamdulillah</span>
+              </div>
+            </label>
+            <label class="radio-opt" id="radioTidak" onclick="selectRadio('puasa','tidak')">
+              <div class="radio-visual">
+                <div class="radio-custom"><div class="radio-dot"></div></div>
+                <span class="radio-label-text">❌ Tidak</span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <div class="field-group" id="alasanWrap" style="display:none">
+          <label class="field-label">Keterangan (jika tidak berpuasa)</label>
+          <textarea class="inner-textarea" id="fieldAlasan" rows="3" placeholder="Tulis alasan jika tidak berpuasa..."></textarea>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Waktu Sahur & Buka Puasa</label>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div>
+              <div style="font-size:.7rem;font-weight:700;color:#7A8BA8;margin-bottom:4px">🌤️ Waktu Sahur</div>
+              <input type="time" class="inner-input" id="fieldSahur">
+            </div>
+            <div>
+              <div style="font-size:.7rem;font-weight:700;color:#7A8BA8;margin-bottom:4px">🌇 Waktu Berbuka</div>
+              <input type="time" class="inner-input" id="fieldBuka">
+            </div>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Menu Buka Puasa</label>
+          <input type="text" class="inner-input" id="fieldMenu" placeholder="Contoh: Kurma, es buah, nasi goreng...">
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Doa yang Dibaca Saat Berbuka</label>
+          <textarea class="inner-textarea" id="fieldDoa" rows="2" placeholder="Tuliskan doa berbuka yang kamu baca..."></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- SHALAT WAJIB -->
+    <div id="tab-shalat" class="journal-section">
+      <div class="section-card">
+        <div class="section-card-title"><div class="sc-ico ic-b">🕌</div><div>Jurnal Shalat Wajib<br><span style="font-size:.65rem;font-weight:500;color:#7a8ba8">5 waktu shalat fardhu</span></div></div>
+
+        <div class="toggle-grid" id="shalatGrid">
+          <div class="toggle-item" id="toggle-subuh" onclick="togglePrayer('subuh')">
+            <div class="toggle-name"><span class="toggle-name-icon">🌅</span> Subuh</div>
+            <div class="toggle-switch"></div>
+          </div>
+          <div class="toggle-item" id="toggle-dzuhur" onclick="togglePrayer('dzuhur')">
+            <div class="toggle-name"><span class="toggle-name-icon">☀️</span> Dzuhur</div>
+            <div class="toggle-switch"></div>
+          </div>
+          <div class="toggle-item" id="toggle-ashar" onclick="togglePrayer('ashar')">
+            <div class="toggle-name"><span class="toggle-name-icon">🌤️</span> Ashar</div>
+            <div class="toggle-switch"></div>
+          </div>
+          <div class="toggle-item" id="toggle-maghrib" onclick="togglePrayer('maghrib')">
+            <div class="toggle-name"><span class="toggle-name-icon">🌆</span> Maghrib</div>
+            <div class="toggle-switch"></div>
+          </div>
+          <div class="toggle-item" id="toggle-isya" onclick="togglePrayer('isya')">
+            <div class="toggle-name"><span class="toggle-name-icon">🌙</span> Isya</div>
+            <div class="toggle-switch"></div>
+          </div>
+        </div>
+
+        <div class="field-group" style="margin-top:18px">
+          <label class="field-label">Keterangan</label>
+          <textarea class="inner-textarea" id="fieldKetShalat" rows="3" placeholder="Catatan tambahan shalat wajib..."></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- SHALAT SUNAH -->
+    <div id="tab-sunah" class="journal-section">
+      <div class="section-card">
+        <div class="section-card-title"><div class="sc-ico ic-y">✨</div><div>Jurnal Shalat Sunah<br><span style="font-size:.65rem;font-weight:500;color:#7a8ba8">Amalan sunnah Ramadhan</span></div></div>
+
+        <div class="toggle-grid">
+          <div class="toggle-item" id="toggle-tahajud" onclick="toggleSunah('tahajud')">
+            <div class="toggle-name"><span class="toggle-name-icon">🌃</span> Tahajud</div>
+            <div class="toggle-switch"></div>
+          </div>
+          <div class="toggle-item" id="toggle-dhuha" onclick="toggleSunah('dhuha')">
+            <div class="toggle-name"><span class="toggle-name-icon">🌅</span> Dhuha</div>
+            <div class="toggle-switch"></div>
+          </div>
+          <div class="toggle-item" id="toggle-tarawih" onclick="toggleSunah('tarawih')">
+            <div class="toggle-name"><span class="toggle-name-icon">🌙</span> Tarawih</div>
+            <div class="toggle-switch"></div>
+          </div>
+          <div class="toggle-item" id="toggle-witir" onclick="toggleSunah('witir')">
+            <div class="toggle-name"><span class="toggle-name-icon">🌟</span> Witir</div>
+            <div class="toggle-switch"></div>
+          </div>
+        </div>
+
+        <div class="field-group" style="margin-top:18px">
+          <label class="field-label">Keterangan</label>
+          <textarea class="inner-textarea" id="fieldKetSunah" rows="3" placeholder="Catatan shalat sunah..."></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- TILAWAH -->
+    <div id="tab-tilawah" class="journal-section">
+      <div class="section-card">
+        <div class="section-card-title"><div class="sc-ico ic-t">📖</div><div>Jurnal Tilawah Al-Qur'an<br><span style="font-size:.65rem;font-weight:500;color:#7a8ba8">Bacaan Al-Qur'an harian</span></div></div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
+          <div class="field-group" style="margin:0">
+            <label class="field-label">Surat yang Dibaca</label>
+            <input type="text" class="inner-input" id="fieldSurat" placeholder="Contoh: Al-Baqarah">
+          </div>
+          <div class="field-group" style="margin:0">
+            <label class="field-label">Ayat</label>
+            <input type="text" class="inner-input" id="fieldAyat" placeholder="Contoh: 1 - 25">
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Jumlah Halaman / Juz</label>
+          <input type="text" class="inner-input" id="fieldHalaman" placeholder="Contoh: 2 halaman / ¼ juz">
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Tajwid yang Ditemukan</label>
+          <textarea class="inner-textarea" id="fieldTajwid" rows="2" placeholder="Contoh: Mad Thabi'i, Ikhfa, Idgham..."></textarea>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Makna Singkat / Kandungan Ayat</label>
+          <textarea class="inner-textarea" id="fieldMakna" rows="3" placeholder="Tuliskan isi kandungan ayat yang kamu baca..."></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- KULTUM -->
+    <div id="tab-kultum" class="journal-section">
+      <div class="section-card">
+        <div class="section-card-title"><div class="sc-ico ic-p">🎙️</div><div>Jurnal Kultum Harian<br><span style="font-size:.65rem;font-weight:500;color:#7a8ba8">Kultum / ceramah harian</span></div></div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
+          <div class="field-group" style="margin:0">
+            <label class="field-label">Sumber Kultum</label>
+            <input type="text" class="inner-input" id="fieldSumber" placeholder="Masjid / TV / YouTube">
+          </div>
+          <div class="field-group" style="margin:0">
+            <label class="field-label">Nama Penceramah</label>
+            <input type="text" class="inner-input" id="fieldPenceramah" placeholder="Nama ustadz/penceramah">
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Tema Kultum</label>
+          <input type="text" class="inner-input" id="fieldTema" placeholder="Contoh: Keutamaan bulan Ramadhan">
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Isi / Ringkasan Kultum</label>
+          <textarea class="inner-textarea" id="fieldKultum" rows="5" placeholder="Tuliskan ringkasan kultum yang kamu dengar..."></textarea>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Hikmah yang Didapat</label>
+          <textarea class="inner-textarea" id="fieldHikmah" rows="3" placeholder="Apa pelajaran yang kamu ambil dari kultum ini?"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- AKHLAK -->
+    <div id="tab-akhlak" class="journal-section">
+      <div class="section-card">
+        <div class="section-card-title"><div class="sc-ico ic-r">❤️</div><div>Jurnal Akhlak Harian<br><span style="font-size:.65rem;font-weight:500;color:#7a8ba8">Latihan akhlak mulia</span></div></div>
+
+        <div class="field-group">
+          <label class="field-label">💥 Kebaikan apa yang saya lakukan hari ini?</label>
+          <textarea class="inner-textarea" id="fieldKebaikan" rows="2" placeholder="Ceritakan kebaikan yang kamu lakukan..."></textarea>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">🤝 Siapa yang saya bantu hari ini?</label>
+          <textarea class="inner-textarea" id="fieldBantu" rows="2" placeholder="Siapa dan bagaimana kamu membantunya?"></textarea>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">😌 Sikap sabar yang saya latih hari ini?</label>
+          <textarea class="inner-textarea" id="fieldSabar" rows="2" placeholder="Ceritakan bagaimana kamu melatih kesabaran..."></textarea>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">💪 Godaan puasa yang berhasil saya kendalikan?</label>
+          <textarea class="inner-textarea" id="fieldGodaan" rows="2" placeholder="Godaan apa yang berhasil kamu lawan?"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- REFLEKSI -->
+    <div id="tab-refleksi" class="journal-section">
+      <div class="section-card">
+        <div class="section-card-title"><div class="sc-ico ic-o">💭</div><div>Refleksi Harian<br><span style="font-size:.65rem;font-weight:500;color:#7a8ba8">Renungan akhir hari</span></div></div>
+
+        <div class="field-group">
+          <label class="field-label">Mood Hari Ini</label>
+          <div class="mood-row" id="moodRow">
+            <div class="mood-btn" data-mood="sangat-baik" onclick="selectMood(this)">
+              <span class="mood-icon">😄</span>
+              <span class="mood-lbl">Sangat Baik</span>
+            </div>
+            <div class="mood-btn" data-mood="baik" onclick="selectMood(this)">
+              <span class="mood-icon">😊</span>
+              <span class="mood-lbl">Baik</span>
+            </div>
+            <div class="mood-btn" data-mood="biasa" onclick="selectMood(this)">
+              <span class="mood-icon">😐</span>
+              <span class="mood-lbl">Biasa</span>
+            </div>
+            <div class="mood-btn" data-mood="lelah" onclick="selectMood(this)">
+              <span class="mood-icon">😴</span>
+              <span class="mood-lbl">Lelah</span>
+            </div>
+            <div class="mood-btn" data-mood="berat" onclick="selectMood(this)">
+              <span class="mood-icon">😓</span>
+              <span class="mood-lbl">Berat</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">🌟 Hal terbaik yang terjadi hari ini</label>
+          <textarea class="inner-textarea" id="fieldTerbaik" rows="2" placeholder="Ceritakan momen terbaik harimu..."></textarea>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">🙏 Syukur hari ini</label>
+          <textarea class="inner-textarea" id="fieldSyukur" rows="2" placeholder="Apa yang kamu syukuri hari ini?"></textarea>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">📝 Doa & Harapan</label>
+          <textarea class="inner-textarea" id="fieldHarapan" rows="3" placeholder="Tuliskan doa dan harapanmu untuk hari esok..."></textarea>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">⭐ Target perbaikan besok</label>
+          <textarea class="inner-textarea" id="fieldTarget" rows="2" placeholder="Apa yang ingin kamu perbaiki besok?"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROGRESS -->
+    <div id="tab-progress" class="journal-section">
+      <div class="section-card">
+        <div class="section-card-title"><div class="sc-ico ic-i">📊</div><div>Progress Ramadhanmu<br><span style="font-size:.65rem;font-weight:500;color:#7a8ba8">Rekapitulasi 30 hari</span></div></div>
+
+        <div class="score-banner">
+          <div class="score-val" id="totalSkor">0</div>
+          <div class="score-label">Total Poin</div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-box c1"><div class="stat-num" id="statPuasa">0</div><div class="stat-lbl">Hari Puasa</div></div>
+          <div class="stat-box c2"><div class="stat-num" id="statShalat">0</div><div class="stat-lbl">Shalat Lengkap</div></div>
+          <div class="stat-box c3"><div class="stat-num" id="statTilawah">0</div><div class="stat-lbl">Hari Tilawah</div></div>
+          <div class="stat-box c4"><div class="stat-num" id="statAkhlak">0</div><div class="stat-lbl">Akhlak Baik</div></div>
+        </div>
+
+        <div style="font-size:.8rem;font-weight:800;color:#3a4a6a;letter-spacing:.5px;text-transform:uppercase;margin-bottom:12px">🏅 Badge yang Diraih</div>
+        <div class="badges-wrap" id="badgesWrap">
+          <div class="badge-chip" style="color:#9BADC8;border-color:#E2EAF8">Terus isi jurnal untuk mendapat badge!</div>
+        </div>
+
+        <div class="chart-section">
+          <div class="chart-title">📈 Grafik Ibadah (30 Hari)</div>
+          <div class="bar-chart" id="barChart">
+            <div class="bar-col">
+              <div class="bar-val" style="color:var(--green3)" id="chartPuasaVal">0</div>
+              <div class="bar-fill" id="chartPuasa" style="height:0"></div>
+              <div class="bar-lbl">Puasa</div>
+            </div>
+            <div class="bar-col">
+              <div class="bar-val" style="color:#3B82F6" id="chartShalatVal">0</div>
+              <div class="bar-fill" id="chartShalat" style="height:0"></div>
+              <div class="bar-lbl">Shalat</div>
+            </div>
+            <div class="bar-col">
+              <div class="bar-val" style="color:#8B5CF6" id="chartTilawahVal">0</div>
+              <div class="bar-fill" id="chartTilawah" style="height:0"></div>
+              <div class="bar-lbl">Tilawah</div>
+            </div>
+            <div class="bar-col">
+              <div class="bar-val" style="color:#EC4899" id="chartAkhlakVal">0</div>
+              <div class="bar-fill" id="chartAkhlak" style="height:0"></div>
+              <div class="bar-lbl">Akhlak</div>
+            </div>
+            <div class="bar-col">
+              <div class="bar-val" style="color:var(--gold3)" id="chartKultumVal">0</div>
+              <div class="bar-fill" id="chartKultum" style="height:0"></div>
+              <div class="bar-lbl">Kultum</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /journal-content -->
+
+  <!-- SAVE BUTTON -->
+  <div class="save-row">
+    <button class="btn-save" onclick="saveDay()">💾 Simpan Jurnal Hari Ini</button>
+  </div>
+
+</div><!-- /appPage -->
+
+<!-- ══════════════════ GURU LOGIN PAGE ══════════════════ -->
+<div id="guruPage" class="page">
+  <div class="guru-card">
+    <div style="width:62px;height:62px;margin:0 auto 14px;background:linear-gradient(135deg,#f0a800,#ffc840);border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:2rem;box-shadow:0 8px 24px rgba(240,168,0,.4)">🧑‍🏫</div>
+    <h2>Login Guru</h2>
+    <p>Masukkan password untuk melihat data siswa</p>
+    <div class="form-group">
+      <label class="form-label">🔐 Password</label>
+      <input type="password" class="form-input" id="guruPass" placeholder="Masukkan password guru">
+    </div>
+    <button class="login-btn" onclick="doGuruLogin()">Masuk Dashboard →</button>
+    <a class="guru-link" onclick="showPage('loginPage')" style="margin-top:12px">← Kembali ke Login Siswa</a>
+  </div>
+</div>
+
+<!-- ══════════════════ DASHBOARD GURU ══════════════════ -->
+<div id="dashboardPage" class="page">
+  <div class="dash-header">
+    <div>
+      <div class="dash-title">📊 Dashboard Guru — Jurnal Ramadhan</div>
+      <div class="dash-sub">SMPN 7 Pasuruan · Data Siswa</div>
+    </div>
+    <button class="btn-keluar" onclick="showPage('loginPage')">Keluar</button>
+  </div>
+
+  <div class="dash-content">
+    <div class="dash-stats-row" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px">
+      <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.13);border-radius:14px;padding:18px 16px;display:flex;align-items:center;gap:14px">
+        <div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,rgba(0,184,122,.2),rgba(0,184,122,.08));display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0">👥</div>
+        <div><div id="dsSiswa" style="font-size:2rem;font-weight:900;color:#fff;line-height:1">0</div><div style="font-size:.62rem;font-weight:800;color:var(--text2);letter-spacing:.5px;text-transform:uppercase;margin-top:2px">Total Siswa</div></div>
+      </div>
+      <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.13);border-radius:14px;padding:18px 16px;display:flex;align-items:center;gap:14px">
+        <div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,rgba(26,111,255,.2),rgba(26,111,255,.08));display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0">🌙</div>
+        <div><div id="dsPuasaTotal" style="font-size:2rem;font-weight:900;color:#fff;line-height:1">0</div><div style="font-size:.62rem;font-weight:800;color:var(--text2);letter-spacing:.5px;text-transform:uppercase;margin-top:2px">Total Hari Puasa</div></div>
+      </div>
+      <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.13);border-radius:14px;padding:18px 16px;display:flex;align-items:center;gap:14px">
+        <div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,rgba(240,168,0,.2),rgba(240,168,0,.08));display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0">📝</div>
+        <div><div id="dsIsiTotal" style="font-size:2rem;font-weight:900;color:#fff;line-height:1">0</div><div style="font-size:.62rem;font-weight:800;color:var(--text2);letter-spacing:.5px;text-transform:uppercase;margin-top:2px">Total Hari Diisi</div></div>
+      </div>
+    </div>
+    <div class="dash-filter-row">
+      <select class="filter-select" id="filterKelas" onchange="renderTable()">
+        <option value="">Semua Kelas</option>
+        <option>7A</option><option>7B</option><option>7C</option><option>7D</option>
+        <option>7E</option><option>7F</option><option>7G</option><option>7H</option>
+        <option>8A</option><option>8B</option><option>8C</option><option>8D</option>
+        <option>8E</option><option>8F</option><option>8G</option><option>8H</option>
+        <option>9A</option><option>9B</option><option>9C</option><option>9D</option>
+        <option>9E</option><option>9F</option><option>9G</option><option>9H</option>
+      </select>
+      <button class="btn-muat" onclick="renderTable()">🔄 Refresh</button>
+      <button class="btn-muat" style="background:linear-gradient(135deg,#EF4444,#F87171)" onclick="clearAllData()">🗑️ Reset Data</button>
+    </div>
+
+    <div class="students-table-wrap">
+      <table class="students-table">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Nama Lengkap</th>
+            <th>Kelas</th>
+            <th>No. Absen</th>
+            <th>Hari Diisi</th>
+            <th>Hari Puasa</th>
+            <th>Shalat Lengkap</th>
+            <th>Progress</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+          <tr><td colspan="8" class="no-data">Belum ada data siswa</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">✅ Berhasil disimpan!</div>
+
+<script>
+/* ═══════════ STARS ═══════════ */
+const sf = document.getElementById('starField');
+for(let i=0;i<60;i++){
+  const s = document.createElement('span');
+  s.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;
+    --d:${2+Math.random()*4}s;--dl:${Math.random()*5}s;--op:${.3+Math.random()*.7};
+    width:${1+Math.random()*2}px;height:${1+Math.random()*2}px;`;
+  sf.appendChild(s);
+}
+
+/* ═══════════ PAGES ═══════════ */
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+/* ═══════════ STATE ═══════════ */
+let currentUser = null;
+let currentDay = 1;
+const GURU_PASS = 'SpanjuBisa123';
+
+function getUserKey(user) {
+  return `rmj_${user.kelas}_${user.absen}`;
+}
+
+function getUserData(user) {
+  const key = getUserKey(user);
+  return JSON.parse(localStorage.getItem(key) || '{"nama":"","kelas":"","absen":"","days":{}}');
+}
+
+function setUserData(user, data) {
+  const key = getUserKey(user);
+  localStorage.setItem(key, JSON.stringify(data));
+  // Also index for guru
+  const index = JSON.parse(localStorage.getItem('rmj_index') || '[]');
+  if (!index.includes(key)) { index.push(key); localStorage.setItem('rmj_index', JSON.stringify(index)); }
+}
+
+/* ═══════════ LOGIN ═══════════ */
+function doLogin() {
+  const nama = document.getElementById('inputNama').value.trim();
+  const kelas = document.getElementById('inputKelas').value;
+  const absen = document.getElementById('inputAbsen').value;
+
+  if (!nama) { showToast('⚠️ Masukkan nama lengkap!', 'warn'); return; }
+  if (!kelas) { showToast('⚠️ Pilih kelas!', 'warn'); return; }
+  if (!absen) { showToast('⚠️ Masukkan nomor absen!', 'warn'); return; }
+
+  currentUser = { nama, kelas, absen };
+
+  // Save user info
+  const data = getUserData(currentUser);
+  data.nama = nama; data.kelas = kelas; data.absen = absen;
+  if (!data.days) data.days = {};
+  setUserData(currentUser, data);
+
+  // Build topbar
+  document.getElementById('topbarName').textContent = nama;
+  document.getElementById('topbarSub').textContent = `${kelas} · No. ${absen}`;
+  document.getElementById('topbarAvatar').textContent = nama.charAt(0).toUpperCase();
+
+  // Build day select
+  buildDaySelect();
+  currentDay = 1;
+  document.getElementById('daySelect').value = '1';
+  loadDay();
+
+  showPage('appPage');
+  updateProgress();
+}
+
+function doLogout() {
+  currentUser = null;
+  showPage('loginPage');
+}
+
+function showGuru() { showPage('guruPage'); }
+
+function doGuruLogin() {
+  const pass = document.getElementById('guruPass').value;
+  if (pass === GURU_PASS) {
+    showPage('dashboardPage');
+    renderTable();
+    document.getElementById('guruPass').value = '';
+  } else {
+    showToast('❌ Password salah!', 'error');
+  }
+}
+
+/* ═══════════ DAY SELECT ═══════════ */
+function buildDaySelect() {
+  const sel = document.getElementById('daySelect');
+  sel.innerHTML = '';
+  for (let i = 1; i <= 30; i++) {
+    const opt = document.createElement('option');
+    opt.value = i;
+    opt.textContent = `Hari ke-${i} Ramadan`;
+    sel.appendChild(opt);
+  }
+}
+
+function loadDay() {
+  currentDay = parseInt(document.getElementById('daySelect').value);
+  document.getElementById('progressDay').textContent = `Hari ke-${currentDay} dari 30`;
+  document.getElementById('progressFill').style.width = (currentDay / 30 * 100).toFixed(2) + '%';
+
+  const data = getUserData(currentUser);
+  const d = (data.days && data.days[currentDay]) || {};
+
+  // PUASA
+  selectRadioSilent('puasa', d.puasaStatus || null);
+  document.getElementById('fieldAlasan').value = d.alasan || '';
+  document.getElementById('fieldSahur').value = d.sahur || '';
+  document.getElementById('fieldBuka').value = d.buka || '';
+  document.getElementById('fieldMenu').value = d.menu || '';
+  document.getElementById('fieldDoa').value = d.doa || '';
+  document.getElementById('alasanWrap').style.display = (d.puasaStatus === 'tidak') ? '' : 'none';
+
+  // SHALAT WAJIB
+  ['subuh','dzuhur','ashar','maghrib','isya'].forEach(s => {
+    const el = document.getElementById(`toggle-${s}`);
+    if (d.shalat && d.shalat[s]) el.classList.add('on'); else el.classList.remove('on');
+  });
+  document.getElementById('fieldKetShalat').value = d.ketShalat || '';
+
+  // SHALAT SUNAH
+  ['tahajud','dhuha','tarawih','witir'].forEach(s => {
+    const el = document.getElementById(`toggle-${s}`);
+    if (d.sunah && d.sunah[s]) el.classList.add('on'); else el.classList.remove('on');
+  });
+  document.getElementById('fieldKetSunah').value = d.ketSunah || '';
+
+  // TILAWAH
+  document.getElementById('fieldSurat').value = d.surat || '';
+  document.getElementById('fieldAyat').value = d.ayat || '';
+  document.getElementById('fieldHalaman').value = d.halaman || '';
+  document.getElementById('fieldTajwid').value = d.tajwid || '';
+  document.getElementById('fieldMakna').value = d.makna || '';
+
+  // KULTUM
+  document.getElementById('fieldSumber').value = d.sumber || '';
+  document.getElementById('fieldPenceramah').value = d.penceramah || '';
+  document.getElementById('fieldTema').value = d.tema || '';
+  document.getElementById('fieldKultum').value = d.kultum || '';
+  document.getElementById('fieldHikmah').value = d.hikmah || '';
+
+  // AKHLAK
+  document.getElementById('fieldKebaikan').value = d.kebaikan || '';
+  document.getElementById('fieldBantu').value = d.bantu || '';
+  document.getElementById('fieldSabar').value = d.sabar || '';
+  document.getElementById('fieldGodaan').value = d.godaan || '';
+
+  // REFLEKSI
+  document.querySelectorAll('.mood-btn').forEach(b => {
+    b.classList.toggle('selected', b.dataset.mood === d.mood);
+  });
+  document.getElementById('fieldTerbaik').value = d.terbaik || '';
+  document.getElementById('fieldSyukur').value = d.syukur || '';
+  document.getElementById('fieldHarapan').value = d.harapan || '';
+  document.getElementById('fieldTarget').value = d.target || '';
+
+  updateProgress();
+}
+
+/* ═══════════ SAVE ═══════════ */
+function saveDay() {
+  if (!currentUser) return;
+  const data = getUserData(currentUser);
+  if (!data.days) data.days = {};
+
+  const puasaYa = document.getElementById('radioYa').classList.contains('selected');
+  const puasaTidak = document.getElementById('radioTidak').classList.contains('selected');
+
+  const shalat = {};
+  ['subuh','dzuhur','ashar','maghrib','isya'].forEach(s => {
+    shalat[s] = document.getElementById(`toggle-${s}`).classList.contains('on');
+  });
+
+  const sunah = {};
+  ['tahajud','dhuha','tarawih','witir'].forEach(s => {
+    sunah[s] = document.getElementById(`toggle-${s}`).classList.contains('on');
+  });
+
+  const selectedMood = document.querySelector('.mood-btn.selected');
+
+  data.days[currentDay] = {
+    puasaStatus: puasaYa ? 'ya' : (puasaTidak ? 'tidak' : null),
+    alasan: document.getElementById('fieldAlasan').value,
+    sahur: document.getElementById('fieldSahur').value,
+    buka: document.getElementById('fieldBuka').value,
+    menu: document.getElementById('fieldMenu').value,
+    doa: document.getElementById('fieldDoa').value,
+    shalat, ketShalat: document.getElementById('fieldKetShalat').value,
+    sunah, ketSunah: document.getElementById('fieldKetSunah').value,
+    surat: document.getElementById('fieldSurat').value,
+    ayat: document.getElementById('fieldAyat').value,
+    halaman: document.getElementById('fieldHalaman').value,
+    tajwid: document.getElementById('fieldTajwid').value,
+    makna: document.getElementById('fieldMakna').value,
+    sumber: document.getElementById('fieldSumber').value,
+    penceramah: document.getElementById('fieldPenceramah').value,
+    tema: document.getElementById('fieldTema').value,
+    kultum: document.getElementById('fieldKultum').value,
+    hikmah: document.getElementById('fieldHikmah').value,
+    kebaikan: document.getElementById('fieldKebaikan').value,
+    bantu: document.getElementById('fieldBantu').value,
+    sabar: document.getElementById('fieldSabar').value,
+    godaan: document.getElementById('fieldGodaan').value,
+    mood: selectedMood ? selectedMood.dataset.mood : null,
+    terbaik: document.getElementById('fieldTerbaik').value,
+    syukur: document.getElementById('fieldSyukur').value,
+    harapan: document.getElementById('fieldHarapan').value,
+    target: document.getElementById('fieldTarget').value,
+    savedAt: new Date().toISOString()
+  };
+
+  setUserData(currentUser, data);
+  updateProgress();
+  showToast('✅ Jurnal Hari ke-' + currentDay + ' berhasil disimpan!');
+}
+
+/* ═══════════ PROGRESS ═══════════ */
+function updateProgress() {
+  if (!currentUser) return;
+  const data = getUserData(currentUser);
+  const days = data.days || {};
+
+  let puasaCount = 0, shalatCount = 0, tilawahCount = 0, akhlakCount = 0, kultumCount = 0;
+
+  for (let i = 1; i <= 30; i++) {
+    const d = days[i];
+    if (!d) continue;
+    if (d.puasaStatus === 'ya') puasaCount++;
+    if (d.shalat) {
+      const done = ['subuh','dzuhur','ashar','maghrib','isya'].filter(s => d.shalat[s]).length;
+      if (done === 5) shalatCount++;
+    }
+    if (d.surat && d.surat.trim()) tilawahCount++;
+    if (d.kebaikan && d.kebaikan.trim()) akhlakCount++;
+    if (d.kultum && d.kultum.trim()) kultumCount++;
+  }
+
+  const totalSkor = puasaCount * 10 + shalatCount * 15 + tilawahCount * 8 + akhlakCount * 5 + kultumCount * 7;
+
+  document.getElementById('totalSkor').textContent = totalSkor;
+  document.getElementById('statPuasa').textContent = puasaCount;
+  document.getElementById('statShalat').textContent = shalatCount;
+  document.getElementById('statTilawah').textContent = tilawahCount;
+  document.getElementById('statAkhlak').textContent = akhlakCount;
+
+  // Chart
+  const maxVal = Math.max(puasaCount, shalatCount, tilawahCount, akhlakCount, kultumCount, 1);
+  const maxH = 80;
+  const vals = [puasaCount, shalatCount, tilawahCount, akhlakCount, kultumCount];
+  const ids = ['chartPuasa','chartShalat','chartTilawah','chartAkhlak','chartKultum'];
+  const vids = ['chartPuasaVal','chartShalatVal','chartTilawahVal','chartAkhlakVal','chartKultumVal'];
+  ids.forEach((id, i) => {
+    document.getElementById(id).style.height = (vals[i] / maxVal * maxH) + 'px';
+    document.getElementById(vids[i]).textContent = vals[i];
+  });
+
+  // Badges
+  const badges = [];
+  if (puasaCount >= 1) badges.push({ label: '🌙 Pembuka Puasa', earned: true });
+  if (puasaCount >= 7) badges.push({ label: '⭐ Pejuang 7 Hari', earned: true });
+  if (puasaCount >= 30) badges.push({ label: '🏆 Mujahid Penuh', earned: true });
+  if (shalatCount >= 5) badges.push({ label: '🕌 Shalat Istiqomah', earned: true });
+  if (tilawahCount >= 3) badges.push({ label: '📖 Pecinta Al-Qur\'an', earned: true });
+  if (akhlakCount >= 5) badges.push({ label: '❤️ Akhlak Mulia', earned: true });
+  if (kultumCount >= 5) badges.push({ label: '🎙️ Pendengar Setia', earned: true });
+  if (totalSkor >= 100) badges.push({ label: '💎 Skor 100!', earned: true });
+
+  const bw = document.getElementById('badgesWrap');
+  if (badges.length === 0) {
+    bw.innerHTML = '<div class="badge-chip" style="color:#9BADC8;border-color:#E2EAF8">Terus isi jurnal untuk mendapat badge!</div>';
+  } else {
+    bw.innerHTML = badges.map(b => `<div class="badge-chip earned">${b.label}</div>`).join('');
+  }
+}
+
+/* ═══════════ TABS ═══════════ */
+function switchTab(btn) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.journal-section').forEach(s => s.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+  if (btn.dataset.tab === 'progress') updateProgress();
+}
+
+/* ═══════════ RADIO ═══════════ */
+function selectRadio(group, val) {
+  if (group === 'puasa') {
+    document.getElementById('radioYa').classList.toggle('selected', val === 'ya');
+    document.getElementById('radioTidak').classList.toggle('selected', val === 'tidak');
+    document.getElementById('alasanWrap').style.display = val === 'tidak' ? '' : 'none';
+  }
+}
+function selectRadioSilent(group, val) { selectRadio(group, val); }
+
+/* ═══════════ TOGGLES ═══════════ */
+function togglePrayer(name) {
+  const el = document.getElementById(`toggle-${name}`);
+  el.classList.toggle('on');
+}
+function toggleSunah(name) {
+  const el = document.getElementById(`toggle-${name}`);
+  el.classList.toggle('on');
+}
+
+/* ═══════════ MOOD ═══════════ */
+function selectMood(btn) {
+  document.querySelectorAll('.mood-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+}
+
+/* ═══════════ TOAST ═══════════ */
+function showToast(msg, type) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.background = type === 'warn' ? '#F59E0B' : type === 'error' ? '#EF4444' : 'var(--green)';
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+/* ═══════════ GURU TABLE ═══════════ */
+function renderTable() {
+  const index = JSON.parse(localStorage.getItem('rmj_index') || '[]');
+  const filterKelas = document.getElementById('filterKelas').value;
+
+  const rows = [];
+  index.forEach(key => {
+    const data = JSON.parse(localStorage.getItem(key) || '{}');
+    if (!data.nama) return;
+    if (filterKelas && data.kelas !== filterKelas) return;
+
+    const days = data.days || {};
+    let diisi = 0, puasaC = 0, shalatC = 0;
+    for (let i = 1; i <= 30; i++) {
+      const d = days[i];
+      if (!d) continue;
+      if (d.savedAt) diisi++;
+      if (d.puasaStatus === 'ya') puasaC++;
+      if (d.shalat) {
+        const done = ['subuh','dzuhur','ashar','maghrib','isya'].filter(s => d.shalat[s]).length;
+        if (done === 5) shalatC++;
+      }
+    }
+    rows.push({ nama: data.nama, kelas: data.kelas, absen: data.absen, diisi, puasaC, shalatC });
+  });
+
+  rows.sort((a, b) => a.kelas.localeCompare(b.kelas) || parseInt(a.absen) - parseInt(b.absen));
+
+  // Update summary stats
+  const dsSiswa = document.getElementById('dsSiswa');
+  const dsPuasaTotal = document.getElementById('dsPuasaTotal');
+  const dsIsiTotal = document.getElementById('dsIsiTotal');
+  if(dsSiswa) dsSiswa.textContent = rows.length;
+  if(dsPuasaTotal) dsPuasaTotal.textContent = rows.reduce((s,r)=>s+r.puasaC,0);
+  if(dsIsiTotal) dsIsiTotal.textContent = rows.reduce((s,r)=>s+r.diisi,0);
+
+  const tbody = document.getElementById('tableBody');
+  if (rows.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="8" class="no-data">Belum ada data siswa</td></tr>';
+    return;
+  }
+
+  tbody.innerHTML = rows.map((r, i) => {
+    const pct = Math.round(r.diisi / 30 * 100);
+    return `<tr>
+      <td class="num">${i + 1}</td>
+      <td><strong>${r.nama}</strong></td>
+      <td><span class="badge-kelas">${r.kelas}</span></td>
+      <td class="num">${r.absen}</td>
+      <td class="num">${r.diisi} / 30</td>
+      <td class="num">${r.puasaC}</td>
+      <td class="num">${r.shalatC}</td>
+      <td>
+        <div class="progress-mini">
+          <div class="progress-mini-bar"><div class="progress-mini-fill" style="width:${pct}%"></div></div>
+          <span class="progress-mini-pct">${pct}%</span>
+        </div>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+function clearAllData() {
+  if (confirm('Yakin ingin menghapus SEMUA data siswa? Tindakan ini tidak bisa dibatalkan!')) {
+    const index = JSON.parse(localStorage.getItem('rmj_index') || '[]');
+    index.forEach(key => localStorage.removeItem(key));
+    localStorage.removeItem('rmj_index');
+    renderTable();
+    showToast('🗑️ Semua data berhasil dihapus');
+  }
+}
+</script>
+</body>
+</html>
